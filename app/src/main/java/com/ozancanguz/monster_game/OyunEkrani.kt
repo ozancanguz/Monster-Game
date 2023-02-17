@@ -20,6 +20,12 @@ class OyunEkrani : AppCompatActivity() {
     private var anakarakterY=0.0f
     private var siyahkareX=0.0f
     private var siyahkareY=0.0f
+    private var morcisimX=0.0f
+    private var morcisimY=0.0f
+    private var saricisimX=0.0f
+    private var saricisimY=0.0f
+
+
 
     // size
     private var ekrangenisligi=0
@@ -106,6 +112,13 @@ class OyunEkrani : AppCompatActivity() {
     fun cisimleriHareketEttirme(){
 
         siyahkareX-=20.0f
+        saricisimX-=15.0f
+        morcisimX-=30.0f
+
+
+
+
+
         if(siyahkareX<0.0f){
           siyahkareX=  ekrangenisligi+22.0f
 
@@ -113,6 +126,29 @@ class OyunEkrani : AppCompatActivity() {
         }
       siyahcisim.x=siyahkareX
         siyahcisim.y=siyahkareY
+
+
+
+        if(saricisimX<0.0f){
+            saricisimX=  ekrangenisligi+22.0f
+
+            saricisimY=floor(Math.random()*ekranyuksekligi).toFloat()
+        }
+        saricisim.x=saricisimX
+        saricisim.y=saricisimY
+
+
+
+
+
+        if(morcisimX<0.0f){
+            morcisimX=  ekrangenisligi+22.0f
+
+            morcisimY=floor(Math.random()*ekranyuksekligi).toFloat()
+        }
+        morcisim.x=morcisimX
+        morcisim.y=morcisimY
+
 
     }
 
