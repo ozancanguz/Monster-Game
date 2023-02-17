@@ -65,34 +65,11 @@ class OyunEkrani : AppCompatActivity() {
 
                     timer.schedule(0,20){
                         Handler(Looper.getMainLooper()).post{
-                            if(dokunmaControl){
-                                anakarakterY-=20.0f
-                            }else{
-                                anakarakterY+=20.0f
-                            }
-
-                            if(anakarakterY<= 0.0f){
-                                anakarakterY=0.0f
-                            }
-                            if(anakarakterY >=ekranyuksekligi-anakarakteryuksekligi){
-                                anakarakterY=(ekranyuksekligi-anakarakteryuksekligi).toFloat()
-
-                            }
-
-
-                            anakarakter.y=anakarakterY
+                           anakarakterhareket()
                         }
                     }
 
                 }
-
-
-
-
-
-
-
-
 
                 return true
             }
@@ -104,6 +81,23 @@ class OyunEkrani : AppCompatActivity() {
     }
 
 
+    fun anakarakterhareket(){
+        if(dokunmaControl){
+            anakarakterY-=20.0f
+        }else{
+            anakarakterY+=20.0f
+        }
+
+        if(anakarakterY<= 0.0f){
+            anakarakterY=0.0f
+        }
+        if(anakarakterY >=ekranyuksekligi-anakarakteryuksekligi){
+            anakarakterY=(ekranyuksekligi-anakarakteryuksekligi).toFloat()
+
+        }
+
+        anakarakter.y=anakarakterY
+    }
 
 
 
