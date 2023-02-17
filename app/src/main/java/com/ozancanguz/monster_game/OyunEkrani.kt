@@ -39,6 +39,8 @@ class OyunEkrani : AppCompatActivity() {
 
     private val timer  = Timer()
 
+    private var skor=0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,6 +86,7 @@ class OyunEkrani : AppCompatActivity() {
                         Handler(Looper.getMainLooper()).post{
                            anakarakterhareket()
                             cisimleriHareketEttirme()
+                            carpismaControl()
                         }
                     }
 
@@ -128,10 +131,6 @@ class OyunEkrani : AppCompatActivity() {
         saricisimX-=ekrangenisligi/60.0f
         morcisimX-=ekrangenisligi/40.0f
 
-
-
-
-
         if(siyahkareX<0.0f){
           siyahkareX=  ekrangenisligi+22.0f
 
@@ -140,8 +139,6 @@ class OyunEkrani : AppCompatActivity() {
       siyahcisim.x=siyahkareX
         siyahcisim.y=siyahkareY
 
-
-
         if(saricisimX<0.0f){
             saricisimX=  ekrangenisligi+22.0f
 
@@ -149,9 +146,6 @@ class OyunEkrani : AppCompatActivity() {
         }
         saricisim.x=saricisimX
         saricisim.y=saricisimY
-
-
-
 
 
         if(morcisimX<0.0f){
@@ -175,6 +169,59 @@ class OyunEkrani : AppCompatActivity() {
           saricisim.y=-800.0f
           morcisim.x=-800.0f
           morcisim.y=-800.0f
+
+    }
+
+    fun carpismaControl(){
+
+        val saricisimMerkezX=saricisimX+saricisim.width/2.0f
+        val saricisimMerkezY=saricisimY+saricisim.height/2.0f
+
+        if(0.0f<=saricisimMerkezX && saricisimMerkezX<=anakaraktergenisligi
+            && anakarakterY<=saricisimMerkezY && saricisimMerkezY<=anakarakterY+anakarakteryuksekligi){
+
+            skor += 20
+            skortv.text=skor.toString()
+            saricisimX=-10.0f
+        }
+
+        val morcisimMerkezX=morcisimX+morcisim.width/2.0f
+        val morcisimMerkezY=morcisimY+morcisim.height/2.0f
+
+        if(0.0f<=morcisimMerkezX && morcisimMerkezX<=anakaraktergenisligi
+            && anakarakterY<=morcisimMerkezY && morcisimMerkezY<=anakarakterY+anakarakteryuksekligi){
+
+            skor += 50
+            skortv.text=skor.toString()
+            morcisimX=-10.0f
+        }
+
+
+
+
+        val siyahkareMerkezX=siyahkareX+siyahcisim.width/2.0f
+        val siyahkareMerkezY=siyahkareY+siyahcisim.height/2.0f
+
+        if(0.0f<=siyahkareMerkezX && siyahkareMerkezX<=anakaraktergenisligi
+            && anakarakterY<=siyahkareMerkezY && siyahkareMerkezY<=anakarakterY+anakarakteryuksekligi){
+
+
+            siyahkareX=-10.0f
+            timer.cancel()
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 
