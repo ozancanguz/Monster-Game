@@ -45,6 +45,11 @@ class OyunEkrani : AppCompatActivity() {
         setContentView(R.layout.activity_oyun_ekrani)
 
 
+        // cisimlerin yeri
+        cisimlerinYeri()
+
+
+
         cl.setOnTouchListener(object: View.OnTouchListener{
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
 
@@ -89,6 +94,8 @@ class OyunEkrani : AppCompatActivity() {
 
 
     }
+
+
 
 
     fun anakarakterhareket(){
@@ -148,6 +155,21 @@ class OyunEkrani : AppCompatActivity() {
         }
         morcisim.x=morcisimX
         morcisim.y=morcisimY
+
+
+    }
+
+
+
+
+    private fun cisimlerinYeri() {
+          siyahcisim.x=-800.0f
+          siyahcisim.y=-800.0f
+          saricisim.x=-800.0f
+          saricisim.y=-800.0f
+          morcisim.x=-800.0f
+          morcisim.y=-800.0f
+
 
 
     }
