@@ -209,6 +209,12 @@ class OyunEkrani : AppCompatActivity() {
             siyahkareX=-10.0f
             timer.cancel()
 
+
+            val intent=Intent(this@OyunEkrani,SonucEkraniActivity::class.java)
+            intent.putExtra("skor",skor)
+            startActivity(intent)
+            finish()
+
         }
 
 

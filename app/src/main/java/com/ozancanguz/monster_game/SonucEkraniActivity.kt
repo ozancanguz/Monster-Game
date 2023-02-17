@@ -3,6 +3,7 @@ package com.ozancanguz.monster_game
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_oyun_ekrani.*
 import kotlinx.android.synthetic.main.activity_sonuc_ekrani.*
 
 class SonucEkraniActivity : AppCompatActivity() {
@@ -10,10 +11,18 @@ class SonucEkraniActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sonuc_ekrani)
 
+        // sonuc skor
+
+        val skor =intent.getIntExtra("skor",0)
+        sonucskor.text=skor.toString()
+
+
         tekrardenebtn.setOnClickListener {
             startActivity(Intent(this@SonucEkraniActivity,MainActivity::class.java))
 
         }
+
+
 
     }
 }
