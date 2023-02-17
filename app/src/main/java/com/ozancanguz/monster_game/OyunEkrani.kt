@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import kotlinx.android.synthetic.main.activity_oyun_ekrani.*
+import java.lang.Math.floor
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -17,6 +18,8 @@ class OyunEkrani : AppCompatActivity() {
     // positions
     private var anakarakterX=0.0f
     private var anakarakterY=0.0f
+    private var siyahkareX=0.0f
+    private var siyahkareY=0.0f
 
     // size
     private var ekrangenisligi=0
@@ -66,6 +69,7 @@ class OyunEkrani : AppCompatActivity() {
                     timer.schedule(0,20){
                         Handler(Looper.getMainLooper()).post{
                            anakarakterhareket()
+                            cisimleriHareketEttirme()
                         }
                     }
 
@@ -97,6 +101,19 @@ class OyunEkrani : AppCompatActivity() {
         }
 
         anakarakter.y=anakarakterY
+    }
+
+    fun cisimleriHareketEttirme(){
+
+        siyahkareX-=20.0f
+        if(siyahkareX<0.0f){
+          siyahkareX=  ekrangenisligi+22.0f
+
+            siyahkareY=floor(Math.random()*ekranyuksekligi).toFloat()
+        }
+      siyahcisim.x=siyahkareX
+        siyahcisim.y=siyahkareY
+
     }
 
 
