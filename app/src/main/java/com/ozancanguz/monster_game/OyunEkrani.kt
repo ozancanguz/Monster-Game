@@ -19,7 +19,8 @@ class OyunEkrani : AppCompatActivity() {
     private var anakarakterY=0.0f
 
     // controls
-    private var dokunmaControl=true
+    private var dokunmaControl=false
+    private var baslangicControl=false
 
     private val timer  = Timer()
 
@@ -32,32 +33,43 @@ class OyunEkrani : AppCompatActivity() {
         cl.setOnTouchListener(object: View.OnTouchListener{
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
 
+                if(baslangicControl){
+                    if(event?.action==MotionEvent.ACTION_DOWN){
 
-
-                if(event?.action==MotionEvent.ACTION_DOWN){
-
-                    Log.d("oyunekrani","Down")
-                }
-                if(event?.action==MotionEvent.ACTION_UP){
-                    Log.d("oyunekrani","Down")
-
-                }
-
-                anakarakterX=anakarakter.x
-                anakarakterY=anakarakter.y
-
-
-                timer.schedule(0,20){
-                    Handler(Looper.getMainLooper()).post{
-                        if(dokunmaControl){
-                            anakarakterY-=20.0f
-                        }else{
-                            anakarakterY+=20.0f
-
-                        }
-                        anakarakter.y=anakarakterY
+                        Log.d("oyunekrani","Down")
+                        dokunmaControl=true
                     }
+                    if(event?.action==MotionEvent.ACTION_UP){
+                        Log.d("oyunekrani","Down")
+                        dokunmaControl=false
+
+                    }
+                }else{
+
+                    baslangicControl=true
+                    anakarakterX=anakarakter.x
+                    anakarakterY=anakarakter.y
+
+
+                    timer.schedule(0,20){
+                        Handler(Looper.getMainLooper()).post{
+                            if(dokunmaControl){
+                                anakarakterY-=20.0f
+                            }else{
+                                anakarakterY+=20.0f
+
+                            }
+                            anakarakter.y=anakarakterY
+                        }
+                    }
+
                 }
+
+
+
+
+
+
 
 
 
