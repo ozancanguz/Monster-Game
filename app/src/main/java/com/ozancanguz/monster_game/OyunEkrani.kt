@@ -18,6 +18,12 @@ class OyunEkrani : AppCompatActivity() {
     private var anakarakterX=0.0f
     private var anakarakterY=0.0f
 
+    // size
+    private var ekrangenisligi=0
+    private var ekranyuksekligi=0
+    private var anakaraktergenisligi=0
+    private var anakarakteryuksekligi=0
+
     // controls
     private var dokunmaControl=false
     private var baslangicControl=false
@@ -50,6 +56,12 @@ class OyunEkrani : AppCompatActivity() {
                     anakarakterX=anakarakter.x
                     anakarakterY=anakarakter.y
 
+                    anakaraktergenisligi=anakarakter.width
+                    anakarakteryuksekligi=anakarakter.height
+                    ekrangenisligi=cl.width
+                    ekranyuksekligi=cl.height
+
+
 
                     timer.schedule(0,20){
                         Handler(Looper.getMainLooper()).post{
@@ -57,8 +69,17 @@ class OyunEkrani : AppCompatActivity() {
                                 anakarakterY-=20.0f
                             }else{
                                 anakarakterY+=20.0f
+                            }
+
+                            if(anakarakterY<= 0.0f){
+                                anakarakterY=0.0f
+                            }
+                            if(anakarakterY >=ekranyuksekligi-anakarakteryuksekligi){
+                                anakarakterY=(ekranyuksekligi-anakarakteryuksekligi).toFloat()
 
                             }
+
+
                             anakarakter.y=anakarakterY
                         }
                     }
