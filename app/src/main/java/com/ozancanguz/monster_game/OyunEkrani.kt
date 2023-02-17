@@ -66,6 +66,9 @@ class OyunEkrani : AppCompatActivity() {
                     }
                 }else{
 
+                    oyunbaslatv.visibility=View.INVISIBLE
+
+
                     baslangicControl=true
                     anakarakterX=anakarakter.x
                     anakarakterY=anakarakter.y
@@ -99,10 +102,13 @@ class OyunEkrani : AppCompatActivity() {
 
 
     fun anakarakterhareket(){
+
+        val anakarakterHiz=ekranyuksekligi/60.0f
+
         if(dokunmaControl){
-            anakarakterY-=20.0f
+            anakarakterY-=anakarakterHiz
         }else{
-            anakarakterY+=20.0f
+            anakarakterY+=anakarakterHiz
         }
 
         if(anakarakterY<= 0.0f){
@@ -118,9 +124,9 @@ class OyunEkrani : AppCompatActivity() {
 
     fun cisimleriHareketEttirme(){
 
-        siyahkareX-=20.0f
-        saricisimX-=15.0f
-        morcisimX-=30.0f
+        siyahkareX-=ekrangenisligi/50.0f
+        saricisimX-=ekrangenisligi/60.0f
+        morcisimX-=ekrangenisligi/40.0f
 
 
 
@@ -169,8 +175,6 @@ class OyunEkrani : AppCompatActivity() {
           saricisim.y=-800.0f
           morcisim.x=-800.0f
           morcisim.y=-800.0f
-
-
 
     }
 
